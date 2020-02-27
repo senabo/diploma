@@ -42,12 +42,25 @@ class TagRegistration(APIView):
 def index(request):
     students = Student.objects.order_by('name')
     groups = Group.objects.all()
-    scan_count = TagReader.objects.order_by('scanned')
+    scan_count = TagReader.objects.order_by('-scanned')
+
+    for s in students:
+        s.number_scan = scan_count.filter(student=s.id).count()
+        s.save()
+
     context = {'students': students,
-               'groups' : groups,
-               'scan_count' : scan_count}
+               'groups': groups,
+               }
+
     return render(request, 'index.html', context)
 
+
+def student_detail(request, pk):
+    scans = TagReader.objects.filter(student=pk)
+    name = Student.objects.get(pk=pk)
+    context = {'scans':scans,
+               'name':name,}
+    return render(request, 'student.html', context)
 
 '''
 
@@ -73,3 +86,5 @@ scan
     
 }
 '''
+
+# {"body":{"tag": "mitka","student": "","scanned": null}}

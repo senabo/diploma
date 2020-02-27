@@ -30,55 +30,21 @@ https://www.tooplate.com/view/2118-chilling-cafe
               <tr class="tm-tr-header">
                 <th class="tm-text-left">Students</th>
                 <th>Group</th>
-                <th>Count attending</th>
+                <th>Total scanning</th>
                 <th> </th>
               </tr>
               {%for student in students %}
               {% if student.group == group%}
               <tr>
-                <td class="tm-text-left">{{student}}</td>
+                <td class="tm-text-left"><a class="tm-footer-link" href="{% url 'student_detail' student.id%}">{{student}}</a> </td>
                 <td>{{student.group}}</td>
+                <td>{{student.number_scan}}</td>
+
                 <td> </td>
-                <td>-</td>
               </tr>
               {%endif%}
               {%endfor%}
-              <!--<tr>-->
-                <!--<td class="tm-text-left">Cuppucino</td>-->
-                <!--<td>$15</td>-->
-                <!--<td>$18</td>-->
-                <!--<td>$20</td>-->
-              <!--</tr>-->
-              <!--<tr>-->
-                <!--<td class="tm-text-left">Fresh Latte</td>-->
-                <!--<td>$10</td>-->
-                <!--<td>$18</td>-->
-                <!--<td>$20</td>-->
-              <!--</tr>-->
-              <!--<tr>-->
-                <!--<td class="tm-text-left">Mocha</td>-->
-                <!--<td>$15</td>-->
-                <!--<td>$18</td>-->
-                <!--<td>$20</td>-->
-              <!--</tr>-->
-              <!--<tr>-->
-                <!--<td class="tm-text-left">Espresso</td>-->
-                <!--<td>$10</td>-->
-                <!--<td>$15</td>-->
-                <!--<td>-</td>-->
-              <!--</tr>-->
-              <!--<tr>-->
-                <!--<td class="tm-text-left">Black Coffee</td>-->
-                <!--<td>$15</td>-->
-                <!--<td>-</td>-->
-                <!--<td>-</td>-->
-              <!--</tr>-->
-              <!--<tr>-->
-                <!--<td class="tm-text-left">Double Shot Expresso</td>-->
-                <!--<td>$20</td>-->
-                <!--<td>$20</td>-->
-                <!--<td>-</td>-->
-              <!--</tr>-->
+
             </table>
           </div>
           {% endfor %}

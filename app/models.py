@@ -15,6 +15,7 @@ class Group(models.Model):
 class Student(models.Model):
     name = models.CharField(verbose_name='ім\'я', max_length=250)
     group = models.ForeignKey(Group, verbose_name='група', on_delete=models.CASCADE)
+    number_scan = models.IntegerField(verbose_name='кількість сканувань',max_length=100, null=True, blank=True)
 
     def __str__(self):
         return self.name

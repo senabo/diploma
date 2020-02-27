@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>System</title>
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,600&display=swap" rel="stylesheet" />
+    <link href="/static/fontawesome/css/all.min.css" rel="stylesheet" />
+    <link href="/static/css/tooplate-chilling-cafe.css" rel="stylesheet" />
+<!--
+Tooplate 2118 Chilling Cafe
+https://www.tooplate.com/view/2118-chilling-cafe
+-->
+  </head>
+  <body>
+    <div class="tm-container">
+
+      <div class="tm-text-white tm-page-header-container">
+        <!--<i class="fas fa-mug-hot fa-2x tm-page-icon"></i>-->
+  <div id="tm-intro-img">
+      <a href="{%url 'index'%}">
+          <img class="back-arrow" src="/media/45718.png" alt="">
+</a>
+        </div>
+        <h1 class="tm-page-header">{{name}}</h1>
+      </div>
+
+      <div class="tm-main-content">
+
+        <!--<div id="tm-intro-img"></div>-->
+        <!-- Coffee Menu -->
+        <section class="tm-section">
+
+          <h2 class="tm-section-header ">{{name.number_scan}} times scanned</h2>
+          <div class="tm-responsive-table">
+            <table>
+              <tr class="tm-tr-header">
+                <th class="tm-text-left">Date</th>
+                <th>Time</th>
+              </tr>
+              {%for scan in scans %}
+              <tr>
+                <td class="tm-text-left">{{scan.scanned|date:"d-m-Y "}}</td>
+                <td>{{scan.scanned|date:"H:i"}}</td>
+
+              </tr>
+              {%endfor%}
+
+            </table>
+          </div>
+        </section>
+
+
+    <script src="static/js/jquery-3.4.1.min.js"></script>
+    <script>
+      $(function() {
+        // Adjust intro image height based on width.
+        $(window).resize(function() {
+          var img = $("#tm-intro-img");
+          var imgWidth = img.width();
+
+          // 640x425 ratio
+          var imgHeight = (imgWidth * 425) / 640;
+
+          if (imgHeight < 300) {
+            imgHeight = 300;
+          }
+
+          img.css("min-height", imgHeight + "px");
+        });
+      });
+    </script>
+  </body>
+</html>

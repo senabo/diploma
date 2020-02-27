@@ -13,7 +13,7 @@ SECRET_KEY = 'p=5ti@p*c3j^cl(4#bgz!1l%_it(-xmr6d93&!py5%7m1iirkw'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['5b29c1e1.ngrok.io',
+ALLOWED_HOSTS = ['24ce3f2c.ngrok.io',
                  '127.0.0.1',
                  'lockallhost']
 
@@ -113,3 +113,5 @@ STATIC_URL = '/static/'
 STATICFILES_DIRS = (
     os.path.join(BASE_DIR, "static"),
 )
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+MEDIA_URL = '/media/'

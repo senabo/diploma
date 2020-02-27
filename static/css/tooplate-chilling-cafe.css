@@ -32,12 +32,24 @@ body {
 .tm-main-content { background-color: #ffffff; }
 
 #tm-intro-img {
-  background-image: url(../img/chilling-cafe-01.jpg);
+  /*background-image: url(../img/chilling-cafe-01.jpg);*/
   background-position: center;
   background-size: cover;
-  min-height: 425px;
-}
+  /*min-height: 425px;*/
+  position: relative;
 
+}
+.back-arrow{
+  position: absolute;
+  width: 50px;
+  height: 40px;
+  top: 27px;
+  left: 0;
+}
+.tm-intro-img{
+
+
+}
 .tm-text-white { color: white; }
 
 .tm-page-header-container { text-align: center; }
@@ -185,7 +197,7 @@ a { transition: all 0.3s ease; }
 }
 
 .tm-footer-link {
-  color: #fff;
+  color: #8c8c8c;
   text-decoration: none;
 }
 

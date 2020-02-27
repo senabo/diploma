@@ -9,6 +9,7 @@ class TagScanSerializer(serializers.Serializer):
     tag = serializers.CharField()
     student = serializers.CharField(allow_blank=True)
     scanned = serializers.DateTimeField(allow_null=True)
+    # number_scan = serializers.IntegerField(allow_null=True)
 
     def create(self, validated_data):
         try:
@@ -20,6 +21,7 @@ class TagScanSerializer(serializers.Serializer):
         # return TagReader.objects.create(**validated_data)
         except TagRegister.DoesNotExist:
             return ('unknown tag')
+
 
 class TagRegisterSerializer(serializers.Serializer):
     tag = serializers.CharField()

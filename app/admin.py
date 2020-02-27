@@ -28,7 +28,7 @@ class StudentInline(admin.TabularInline):
 
 
 class StudentAdmin(admin.ModelAdmin):
-    list_display = ('name', 'group', )
+    list_display = ('name', 'group', 'number_scan')
     list_filter = ('group',)
     search_fields = ('name',)
     list_editable = ('group',)
