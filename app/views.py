@@ -3,6 +3,7 @@ from rest_framework.response import Response
 from rest_framework.views import APIView
 from .models import *
 from .serializers import *
+from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 
 
 class TagScan(APIView):
@@ -40,7 +41,7 @@ class TagRegistration(APIView):
 
 
 def index(request):
-    students = Student.objects.order_by('name')
+    students = Student.objects.order_by('-number_scan')
     groups = Group.objects.all()
     scan_count = TagReader.objects.order_by('-scanned')
 
@@ -56,10 +57,19 @@ def index(request):
 
 
 def student_detail(request, pk):
-    scans = TagReader.objects.filter(student=pk)
+    scans_object = TagReader.objects.filter(student=pk)
     name = Student.objects.get(pk=pk)
+    paginator = Paginator(scans_object, 15)
+    page = request.GET.get('page')
+    try:
+        scans = paginator.page(page)
+    except PageNotAnInteger:
+        scans = paginator.page(1)
+    except EmptyPage:
+        scans = paginator.page(paginator.num_pages)
     context = {'scans':scans,
-               'name':name,}
+               'name':name,
+               'page':page}
     return render(request, 'student.html', context)
 
 '''

@@ -8,10 +8,6 @@
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,600&display=swap" rel="stylesheet" />
     <link href="/static/fontawesome/css/all.min.css" rel="stylesheet" />
     <link href="/static/css/tooplate-chilling-cafe.css" rel="stylesheet" />
-<!--
-Tooplate 2118 Chilling Cafe
-https://www.tooplate.com/view/2118-chilling-cafe
--->
   </head>
   <body>
     <div class="tm-container">
@@ -20,7 +16,7 @@ https://www.tooplate.com/view/2118-chilling-cafe
         <!--<i class="fas fa-mug-hot fa-2x tm-page-icon"></i>-->
   <div id="tm-intro-img">
       <a href="{%url 'index'%}">
-          <img class="back-arrow" src="/media/45718.png" alt="">
+          <img class="back-arrow" src="/media/arrow.png" alt="">
 </a>
         </div>
         <h1 class="tm-page-header">{{name}}</h1>
@@ -50,6 +46,8 @@ https://www.tooplate.com/view/2118-chilling-cafe
             </table>
           </div>
         </section>
+
+          {% include "pagination2.html" with page=scans %}
 
 
     <script src="static/js/jquery-3.4.1.min.js"></script>
