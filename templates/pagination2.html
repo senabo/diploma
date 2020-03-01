@@ -1,80 +1,75 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <meta charset="UTF-8">
-    <title>#dailyui 085 Pagination</title>
-    <script src="https://use.typekit.net/tqi0rfb.js"></script>
-    <script>try {
-        Typekit.load({async: true});
-    } catch (e) {
-    }</script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
-
-
-    <link rel="stylesheet" href="/static/css/style.css">
-
-
-</head>
-
-<body>
 <div class="pagination__wrapper">
     <ul class="pagination">
+        {% if show_all == '1' %}
+            <li>
+                <button onclick="window.location.href = '?page=1';" class="next"
+                        title="Show pages">Show Pages
+                </button>
+            </li>
+        {% endif %}
+
         {% if page.has_previous %}
-        <li>
-            <button class="prev" onclick="window.location.href = '?page={{ page.previous_page_number }}';"
-                    title="previous page">&#10094;
-            </button>
-        </li>
+            <li>
+                <button onclick="window.location.href = '?page=1';"
+                        title="first page ">First page
+                </button>
+            </li>
         {% endif %}
+
         {% if page.has_previous %}
-        <li>
-            <button onclick="window.location.href = '?page={{ page.previous_page_number }}';" title="first page - page 1">1</button>
-        </li>
+            <li>
+                <button class="prev" onclick="window.location.href = '?page={{ page.previous_page_number }}';"
+                        title="previous page">&#10094;
+                </button>
+            </li>
         {% endif %}
-        {% if page.has_previous and page.previous_page_number != 1  %}
-        <li>
-            <span>...</span>
-        </li>
+
+        {% if page.has_previous %}
+            <li>
+                <button onclick="window.location.href = '?page={{ page.previous_page_number }}';"
+                        title="page {{ page.previous_page_number }}">
+                    {{ page.previous_page_number }}
+                </button>
+            </li>
         {% endif %}
-        {% if page.has_previous and page.previous_page_number != 1  %}
+
         <li>
-            <button onclick="window.location.href = '?page={{ page.previous_page_number }}';" title="page 8">
-                {{page.previous_page_number}}
-            </button>
+            <button class="active" title="current page - {{ page.number }}">{{ page.number }}</button>
         </li>
-        {% endif %}
-        <li>
-            <button class="active" title="current page - {{page.number}}">{{ page.number }}</button>
-        </li>
-        {% if page.has_next and page.next_page_number != page.paginator.num_pages %}
-        <li>
-            <button onclick="window.location.href = '?page={{ page.next_page_number }}';" title="last page -">
-                {{page.next_page_number}}
-            </button>
-        </li>
-        {% endif %}
-        {% if page.has_next and page.next_page_number != page.paginator.num_pages %}
-        <li>
-            <span>...</span>
-        </li>
-        {% endif %}
+
         {% if page.has_next %}
-        <li>
-            <button onclick="window.location.href = '?page={{ page.paginator.num_pages }}';" title="last page -">
-                {{page.paginator.num_pages}}
-            </button>
-        </li>
+            <li>
+                <button onclick="window.location.href = '?page={{ page.next_page_number }}';"
+                        title="page {{ page.next_page_number }}">
+                    {{ page.next_page_number }}
+                </button>
+            </li>
         {% endif %}
+
         {% if page.has_next %}
-        <li>
-            <button onclick="window.location.href = '?page={{ page.next_page_number }}';" class="next"
-                    title="next page">&#10095;
-            </button>
-        </li>
+            <li>
+                <button onclick="window.location.href = '?page={{ page.next_page_number }}';" class="next"
+                        title="next page">&#10095;
+                </button>
+            </li>
         {% endif %}
+
+        {% if page.has_next %}
+            <li>
+                <button onclick="window.location.href = '?page={{ page.paginator.num_pages }}';"
+                        title="last page">
+                    Last page
+                </button>
+            </li>
+        {% endif %}
+
+        {% if all != '1' and page.has_next or page.has_previous %}
+            <li>
+                <button onclick="window.location.href = '?show_all=1';" class="next"
+                        title="show all pages">| Show All
+                </button>
+            </li>
+        {% endif %}
+
     </ul>
 </div>
-
-
-</body>
-</html>

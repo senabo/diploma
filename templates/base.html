@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <meta http-equiv="X-UA-Compatible" content="ie=edge"/>
+
+    <title>{% block title %}{% endblock %}</title>
+
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,600&display=swap" rel="stylesheet"/>
+    <link href="/static/fontawesome/css/all.min.css" rel="stylesheet"/>
+    <link href="/static/css/style.css" rel="stylesheet"/>
+</head>
+
+<body>
+<div class="tm-container">
+
+    {% block content %}
+    {% endblock %}
+
+    <footer>
+        <p class="tm-text-white tm-footer-text"> Icons made by <a class="tm-footer-link"
+                                                                  href="https://www.flaticon.com/authors/freepik"
+                                                                  title="Freepik">Freepik</a> from <a
+                class="tm-footer-link"
+                href="https://www.flaticon.com/" title="Flaticon"> www.flaticon.com</a></p>
+        <p class="tm-text-white tm-footer-text">
+            Copyright &copy; 2020 Nazar Senkiv . Design:
+            <a href="https://www.tooplate.com" class="tm-footer-link">Tooplate</a>
+        </p>
+
+    </footer>
+</div>
+</body>
+
+
+</html>

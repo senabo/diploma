@@ -10,7 +10,7 @@ class TagScan(APIView):
     def get(self, request):
         tags = TagReader.objects.all()
         serializer = TagScanSerializer(tags, many=True)
-        return Response({'tags':serializer.data})
+        return Response({'tags': serializer.data})
 
     def post(self, request):
         tag = request.data.get("body")
@@ -25,7 +25,6 @@ class TagScan(APIView):
 
 class TagRegistration(APIView):
     def get(self, request):
-
         tags = TagRegister.objects.all()
         serializer = TagRegisterSerializer(tags, many=True)
         return Response({'tags': serializer.data})
@@ -56,10 +55,14 @@ def index(request):
     return render(request, 'index.html', context)
 
 
-def student_detail(request, pk):
+def student_detail(request, pk, ):
     scans_object = TagReader.objects.filter(student=pk)
     name = Student.objects.get(pk=pk)
-    paginator = Paginator(scans_object, 15)
+    show_all = request.GET.get('show_all')
+    if show_all != "1":
+        paginator = Paginator(scans_object, 12)
+    else:
+        paginator = Paginator(scans_object, scans_object.count())
     page = request.GET.get('page')
     try:
         scans = paginator.page(page)
@@ -67,10 +70,13 @@ def student_detail(request, pk):
         scans = paginator.page(1)
     except EmptyPage:
         scans = paginator.page(paginator.num_pages)
-    context = {'scans':scans,
-               'name':name,
-               'page':page}
+    context = {'scans': scans,
+               'name': name,
+               'page': page,
+               'show_all': show_all,
+               }
     return render(request, 'student.html', context)
+
 
 '''
 

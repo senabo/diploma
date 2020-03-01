@@ -1,8 +1,6 @@
 from rest_framework import serializers
-from .models import *
+from .models import TagReader, TagRegister
 from django.db import IntegrityError
-
-
 
 
 class TagScanSerializer(serializers.Serializer):
