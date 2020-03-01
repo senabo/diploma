@@ -18,7 +18,6 @@ class TagScan(APIView):
         if serializer.is_valid(raise_exception=True):
             tag_saved = serializer.save()
             print(tag_saved)
-            # print('Succes ', tag_saved.student)
             return Response(tag_saved)
         return Response('error')
 
@@ -42,10 +41,8 @@ class TagRegistration(APIView):
 def index(request):
     students = Student.objects.order_by('-number_scan')
     groups = Group.objects.all()
-    scan_count = TagReader.objects.order_by('-scanned')
-
     for s in students:
-        s.number_scan = scan_count.filter(student=s.id).count()
+        s.number_scan = s.tags.all().count()
         s.save()
 
     context = {'students': students,
@@ -57,12 +54,17 @@ def index(request):
 
 def student_detail(request, pk, ):
     scans_object = TagReader.objects.filter(student=pk)
-    name = Student.objects.get(pk=pk)
+    if not scans_object.exists():
+        name = Student.objects.get(pk=pk)
+    else:
+        name = scans_object.first().student
+
     show_all = request.GET.get('show_all')
     if show_all != "1":
         paginator = Paginator(scans_object, 12)
     else:
         paginator = Paginator(scans_object, scans_object.count())
+
     page = request.GET.get('page')
     try:
         scans = paginator.page(page)
@@ -70,11 +72,13 @@ def student_detail(request, pk, ):
         scans = paginator.page(1)
     except EmptyPage:
         scans = paginator.page(paginator.num_pages)
+
     context = {'scans': scans,
                'name': name,
                'page': page,
                'show_all': show_all,
                }
+
     return render(request, 'student.html', context)
 
 

@@ -5,7 +5,8 @@ from .models import *
 class MysiteAdmin(admin.AdminSite):
     index_title = 'Система контролю відвідуваності'
     site_header = 'Система контролю відвідуваності'
-    site_title  = 'Система контролю відвідуваності'
+    site_title = 'Система контролю відвідуваності'
+
 
 tracker_admin = MysiteAdmin(name="tracker_admin")
 
@@ -14,6 +15,7 @@ class TagRegisterInline(admin.StackedInline):
     model = TagRegister
     readonly_fields = ('tag',)
     # fields = ('tag',)
+
 
 class TagReaderInline(admin.StackedInline):
     model = TagReader
@@ -32,6 +34,7 @@ class StudentAdmin(admin.ModelAdmin):
     list_filter = ('group',)
     search_fields = ('name',)
     list_editable = ('group',)
+    readonly_fields = ('number_scan',)
     inlines = (TagRegisterInline, TagReaderInline)
     # list_display_links = ('name','tag')
 
@@ -46,7 +49,7 @@ class TagReaderAdmin(admin.ModelAdmin):
 
 
 class TagRegisterAdmin(admin.ModelAdmin):
-    list_display = ('tag','student')
+    list_display = ('tag', 'student')
     list_filter = ('scanned',)
     list_editable = ('student',)
     readonly_fields = ('tag',)
@@ -58,10 +61,7 @@ class GroupAdmin(admin.ModelAdmin):
     inlines = (StudentInline,)
 
 
-
-
-
 tracker_admin.register(Student, StudentAdmin)
 tracker_admin.register(TagReader, TagReaderAdmin)
 tracker_admin.register(TagRegister, TagRegisterAdmin)
-tracker_admin.register(Group,GroupAdmin)
+tracker_admin.register(Group, GroupAdmin)

@@ -26,10 +26,17 @@
                                            href="{% url 'student_detail' student.id %}">
                                             {{ student }}</a>
                                     </td>
+
                                     <td>{{ student.group }}</td>
+
                                     <td>{{ student.number_scan }}</td>
 
-                                    <td></td>
+                                    {% if  student.tags.all.first != None %}
+                                        <td>{{ student.tags.all.first }}</td>
+                                    {% else %}
+                                        <td> - </td>
+                                    {% endif %}
+
                                 </tr>
                             {% endif %}
                         {% endfor %}
