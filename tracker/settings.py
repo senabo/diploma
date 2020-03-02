@@ -12,9 +12,10 @@ SECRET_KEY = 'p=5ti@p*c3j^cl(4#bgz!1l%_it(-xmr6d93&!py5%7m1iirkw'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['02032377.ngrok.io',
-                 '127.0.0.1',
-                 'lockallhost']
+ALLOWED_HOSTS = ['li1651-168.members.linode.com',
+                 # '127.0.0.1',
+                 # 'lockallhost'
+                 ]
 
 INSTALLED_APPS = [
     'django.contrib.admin',

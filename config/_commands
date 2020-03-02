@@ -1,5 +1,5 @@
-sudo ln -s /home/jurgeon/projects/project_name/src/config/project_name                    /etc/nginx/sites-enabled/
-sudo ln -s /home/jurgeon/projects/project_name/src/config/project_name.service            /etc/systemd/system/
+sudo ln -s /home/senabo/projects/tracker/src/config/tracker                    /etc/nginx/sites-enabled/
+sudo ln -s /home/senabo/projects/tracker/src/config/tracker.service            /etc/systemd/system/
 
 
 sudo systemctl enable nginx
@@ -7,14 +7,14 @@ sudo systemctl start nginx
 sudo systemctl restart nginx
 #sudo systemctl status nginx
 
-sudo systemctl enable project_name
-sudo systemctl start project_name
-sudo systemctl restart project_name
-#sudo systemctl status project_name
+sudo systemctl enable tracker
+sudo systemctl start tracker
+sudo systemctl restart tracker
+#sudo systemctl status tracker
 
 sudo systemctl daemon-reload
 
-sudo certbot --nginx -d project_domain.com
+sudo certbot --nginx -d li1651-168.members.linode.com
 
 sudo certbot renew --dry-run
 
