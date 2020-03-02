@@ -1,0 +1,20 @@
+server{
+
+    server_name li1651-168.members.linode.com;
+    listen 80;
+
+
+    location /media {
+        alias /home/senabo/projects/tracker/src/media;
+    }
+
+    location /static {
+        alias /home/senabo/projects/tracker/src/static_root;
+    }
+
+    location / {
+        uwsgi_pass unix:/home/senabo/projects/tracker/src/config/tracker.sock;
+        include /etc/nginx/uwsgi_params;
+    }
+
+}
