@@ -1,21 +1,13 @@
 import os
 
-# Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
-# Quick-start development settings - unsuitable for production
-# See https://docs.djangoproject.com/en/3.0/howto/deployment/checklist/
-
-# SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = 'p=5ti@p*c3j^cl(4#bgz!1l%_it(-xmr6d93&!py5%7m1iirkw'
 
-# SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = ['li1651-168.members.linode.com',
-                 # '127.0.0.1',
-                 # 'lockallhost'
-                 ]
+ALLOWED_HOSTS = ["li1483-59.members.linode.com",
+                 "139.162.166.59"]
 
 INSTALLED_APPS = [
     'django.contrib.admin',
@@ -65,8 +57,6 @@ DATABASES = {
     }
 }
 
-# Password validation
-# https://docs.djangoproject.com/en/3.0/ref/settings/#auth-password-validators
 
 AUTH_PASSWORD_VALIDATORS = [
     {
