@@ -2,7 +2,7 @@
 Description=uWSGI Emperor service
 
 [Service]
-ExecStartPre=/bin/bash -c 'mkdir -p /home/senabo/projects/tracker/src/config; chown username:www-data /home/senabo/projects/tracker/src/config'
+ExecStartPre=/bin/bash -c 'mkdir -p /home/senabo/projects/tracker/src/config; chown senabo:www-data /home/senabo/projects/tracker/src/config'
 ExecStart=/usr/local/bin/uwsgi --emperor /home/senabo/projects/tracker/src/config
 Restart=always
 KillSignal=SIGQUIT

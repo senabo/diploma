@@ -1,6 +1,6 @@
 server{
 
-    server_name li1483-59.members.linode.com;
+    server_name tracker.senabo.site;
     listen 80;
 
 
