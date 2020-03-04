@@ -14,7 +14,7 @@ sudo systemctl restart tracker
 
 sudo systemctl daemon-reload
 
-sudo certbot --nginx -d li1651-168.members.linode.com
+sudo certbot --nginx -d tracker.senabo.site
 
 sudo certbot renew --dry-run
 

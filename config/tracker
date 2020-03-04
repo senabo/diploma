@@ -1,6 +1,8 @@
 server{
 
     server_name tracker.senabo.site;
+    listen 80;
+
 
 
     location /media {
