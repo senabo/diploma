@@ -1,7 +1,6 @@
 server{
 
-    server_name li1483-59.members.linode.com;
-    listen 80;
+    server_name tracker.senabo.site;
 
 
     location /media {
@@ -16,5 +15,27 @@ server{
         uwsgi_pass unix:/home/senabo/projects/tracker/src/config/tracker.sock;
         include /etc/nginx/uwsgi_params;
     }
+
+
+
+
+    listen 443 ssl; # managed by Certbot
+    ssl_certificate /etc/letsencrypt/live/tracker.senabo.site/fullchain.pem; # managed by Certbot
+    ssl_certificate_key /etc/letsencrypt/live/tracker.senabo.site/privkey.pem; # managed by Certbot
+    include /etc/letsencrypt/options-ssl-nginx.conf; # managed by Certbot
+    ssl_dhparam /etc/letsencrypt/ssl-dhparams.pem; # managed by Certbot
+
+}
+server{
+    if ($host = tracker.senabo.site) {
+        return 301 https://$host$request_uri;
+    } # managed by Certbot
+
+
+
+    server_name tracker.senabo.site;
+    listen 80;
+    return 404; # managed by Certbot
+
 
 }

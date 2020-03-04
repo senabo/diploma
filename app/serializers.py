@@ -28,6 +28,6 @@ class TagRegisterSerializer(serializers.Serializer):
             res =  TagRegister.objects.create(tag=validated_data['tag'])
             return f'{res} saved'
         except IntegrityError:
-            return ('already in database')
+            return ('already in db')
         except:
             return 'unknown error'

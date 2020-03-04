@@ -6,7 +6,7 @@ SECRET_KEY = 'p=5ti@p*c3j^cl(4#bgz!1l%_it(-xmr6d93&!py5%7m1iirkw'
 
 DEBUG = False
 
-ALLOWED_HOSTS = ["li1483-59.members.linode.com",
+ALLOWED_HOSTS = ["tracker.senabo.site",
                  "139.162.166.59"]
 
 INSTALLED_APPS = [
