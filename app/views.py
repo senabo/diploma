@@ -80,31 +80,3 @@ def student_detail(request, pk, ):
                }
 
     return render(request, 'student.html', context)
-
-
-'''
-
-register
-{
-    "body": 
-        {
-            "tag": "mitka",
-    "student":""
-        }
-    
-}
-
-
-scan
-{
-    "body": 
-        {
-            "tag": "mitka",
-    "student":"",
-"scanned":null
-        }
-    
-}
-'''
-
-# {"body":{"tag": "mitka","student": "","scanned": null}}

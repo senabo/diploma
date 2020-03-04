@@ -14,7 +14,6 @@ tracker_admin = MysiteAdmin(name="tracker_admin")
 class TagRegisterInline(admin.StackedInline):
     model = TagRegister
     readonly_fields = ('tag',)
-    # fields = ('tag',)
 
 
 class TagReaderInline(admin.StackedInline):
@@ -25,7 +24,7 @@ class TagReaderInline(admin.StackedInline):
 
 class StudentInline(admin.TabularInline):
     model = Student
-    readonly_fields = ('name',)
+    readonly_fields = ('name', 'number_scan')
     extra = 0
 
 
@@ -35,25 +34,22 @@ class StudentAdmin(admin.ModelAdmin):
     search_fields = ('name',)
     list_editable = ('group',)
     readonly_fields = ('number_scan',)
+    ordering = ('group', 'name')
     inlines = (TagRegisterInline, TagReaderInline)
-    # list_display_links = ('name','tag')
 
 
 class TagReaderAdmin(admin.ModelAdmin):
     list_display = ('student', 'scanned', 'tag')
-    list_filter = ('scanned',)
+    list_filter = ('scanned', 'student')
     search_fields = ('student',)
     readonly_fields = ('student', 'scanned', 'tag')
-    # list_editable = ('group',)
-    # list_display_links = ('name', 'tag')
 
 
 class TagRegisterAdmin(admin.ModelAdmin):
-    list_display = ('tag', 'student')
+    list_display = ('tag', 'student', 'scanned')
     list_filter = ('scanned',)
     list_editable = ('student',)
     readonly_fields = ('tag',)
-    # search_fields = ('student',)
 
 
 class GroupAdmin(admin.ModelAdmin):

@@ -16,7 +16,7 @@ class TagScanSerializer(serializers.Serializer):
             res = TagReader.objects.create(tag=tag, student=student)
             return f'{student}'
         except TagRegister.DoesNotExist:
-            return ('unknown tag')
+            return 'unknown tag'
 
 
 class TagRegisterSerializer(serializers.Serializer):
@@ -25,9 +25,9 @@ class TagRegisterSerializer(serializers.Serializer):
 
     def create(self, validated_data):
         try:
-            res =  TagRegister.objects.create(tag=validated_data['tag'])
+            res = TagRegister.objects.create(tag=validated_data['tag'])
             return f'{res} saved'
         except IntegrityError:
-            return ('already in db')
+            return 'already in db'
         except:
             return 'unknown error'

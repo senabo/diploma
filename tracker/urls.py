@@ -13,7 +13,6 @@ urlpatterns = [
     path('api/', include('app.urls')),
     path('', index, name = 'index' ),
     path('student/<pk>/', student_detail, name='student_detail' ),
-
 ]
 
 
